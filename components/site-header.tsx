@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { Menu, X } from 'lucide-react'
 import { useState } from 'react'
 import { ThemeToggle } from './theme-toggle'
+import { images } from '@/lib/data/images'
 
 const links = ['About', 'Programs', 'Impact', 'News', 'Get Involved', 'Reports']
 
@@ -14,8 +15,8 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 border-b border-border/70 bg-background/95 backdrop-blur">
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 lg:px-8">
         <Link href="/" aria-label="DAVO home" className="shrink-0">
-          <Image src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/davo-logo-for-light-bg-lReMO9sDiwCdlcdJsoLQfE5wXTD22H.png" alt="DAVO" width={126} height={46} className="h-11 w-auto dark:hidden" priority />
-          <Image src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/davo-logo-for-dark-bg-UNgliPn27GSoQQG8kg9eOMFf98wYw8.png" alt="DAVO" width={126} height={46} className="hidden h-11 w-auto dark:block" priority />
+          <Image src={images.logoLight.src} alt={images.logoLight.alt} width={images.logoLight.width} height={images.logoLight.height} className="h-11 w-auto dark:hidden" priority />
+          <Image src={images.logoDark.src} alt={images.logoDark.alt} width={images.logoDark.width} height={images.logoDark.height} className="hidden h-11 w-auto dark:block" priority />
         </Link>
         <nav className="hidden items-center gap-7 lg:flex" aria-label="Primary navigation">
           {links.map((link) => <Link key={link} href={`/${link.toLowerCase().replace(' ', '-')}`} className="text-sm font-medium text-muted-foreground transition hover:text-foreground">{link}</Link>)}
