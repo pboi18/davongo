@@ -1,16 +1,6 @@
+import Image from 'next/image'
+import Link from 'next/link'
+
 export default function Home() {
-  return (
-    <div className="flex min-h-screen items-center justify-center font-sans">
-      <main className="flex w-full max-w-3xl flex-col items-center gap-8 px-6 py-16 text-center sm:items-start sm:text-left">
-        <div className="flex flex-col gap-4">
-          <h1 className="text-4xl font-bold tracking-tight">
-            DAVO
-          </h1>
-          <p className="max-w-md text-lg text-muted-foreground">
-            To get started, send a prompt or modify this page directly.
-          </p>
-        </div>
-      </main>
-    </div>
-  );
+  return <main><section aria-labelledby="hero-title" className="relative overflow-hidden bg-[#0B1220] text-white"><div className="mx-auto grid min-h-[640px] max-w-7xl items-end gap-10 px-5 pb-16 pt-20 lg:grid-cols-[1fr_0.85fr] lg:items-center lg:px-8 lg:pb-20"><div className="relative z-10 max-w-2xl"><p className="mb-6 text-sm font-semibold uppercase tracking-[0.22em] text-[#4CC22F]">People. Purpose. Progress.</p><h1 id="hero-title" className="font-serif text-5xl leading-[1.02] tracking-tight sm:text-7xl">Building a Nigeria where everyone can thrive.</h1><p className="mt-7 max-w-lg text-lg leading-8 text-white/70">DAVO partners with communities to create lasting change through opportunity, dignity, and collective action.</p><div className="mt-9 flex flex-wrap gap-3"><Link href="/about" className="rounded-full bg-[#3AA0FF] px-6 py-3.5 text-sm font-semibold text-white hover:bg-[#3AA0FF]/90">Discover our work</Link><Link href="/donate" className="rounded-full border border-white/30 px-6 py-3.5 text-sm font-semibold text-white hover:bg-white/10">Support DAVO</Link></div></div><div className="relative h-72 overflow-hidden rounded-[2rem] lg:h-[440px]"><Image src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?auto=format&fit=crop&w=1400&q=85" alt="Community members working together outdoors" fill className="object-cover" priority sizes="(max-width: 1024px) 100vw, 45vw" /><div className="absolute inset-0 bg-[#0B1220]/20" /></div></div></section><section className="bg-background px-5 py-20 lg:px-8 lg:py-28"><div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.8fr_1.2fr]"><p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">Why DAVO</p><div><h2 className="max-w-3xl font-serif text-4xl leading-tight tracking-tight sm:text-5xl">Progress is possible when communities lead the way.</h2><p className="mt-6 max-w-2xl text-lg leading-8 text-muted-foreground">We listen first, work alongside local leaders, and invest in solutions that last. Together, we are expanding access to education, economic opportunity, and a healthier future.</p><Link href="/about" className="mt-8 inline-flex font-semibold text-primary underline decoration-primary/40 underline-offset-8">Learn about our approach</Link></div></div></section><section className="bg-muted/40 px-5 py-20 lg:px-8"><div className="mx-auto max-w-7xl"><div className="flex flex-col justify-between gap-5 sm:flex-row sm:items-end"><div><p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#2EA812]">Our focus</p><h2 className="mt-3 font-serif text-4xl tracking-tight">A stronger future, together.</h2></div><Link href="/programs" className="font-semibold text-primary">View all programs →</Link></div><div className="mt-12 grid gap-5 md:grid-cols-3">{[['01','Education','Opening doors to learning and possibility.'],['02','Livelihoods','Helping families build secure, independent futures.'],['03','Wellbeing','Supporting healthier, more resilient communities.']].map(([number,title,body]) => <article key={number} className="rounded-2xl border border-border bg-background p-7"><span className="text-sm font-semibold text-primary">{number}</span><h3 className="mt-14 font-serif text-2xl">{title}</h3><p className="mt-3 leading-7 text-muted-foreground">{body}</p></article>)}</div></div></section></main>
 }

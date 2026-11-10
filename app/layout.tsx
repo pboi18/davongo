@@ -1,10 +1,17 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
+import { Fraunces, Inter } from 'next/font/google'
 import './globals.css'
 
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
+const fraunces = Fraunces({ subsets: ['latin'], variable: '--font-fraunces' })
+import { ThemeProvider } from '@/components/theme-provider'
+import { SiteHeader } from '@/components/site-header'
+import { SiteFooter } from '@/components/site-footer'
+
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
+  title: 'DAVO | Building a Nigeria where everyone can thrive',
+  description: 'DAVO partners with communities to create lasting change through opportunity, dignity, and collective action.',
   generator: 'v0.app',
   icons: {
     icon: [
@@ -40,8 +47,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased">
-        {children}
+      <body className={`${inter.variable} ${fraunces.variable} antialiased`}>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+          <SiteHeader />
+          {children}
+          <SiteFooter />
+        </ThemeProvider>
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>
