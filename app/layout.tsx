@@ -8,6 +8,7 @@ const fraunces = Fraunces({ subsets: ['latin'], variable: '--font-fraunces' })
 import { ThemeProvider } from '@/components/theme-provider'
 import { SiteHeader } from '@/components/site-header'
 import { SiteFooter } from '@/components/site-footer'
+import { AssistantWidget } from '@/components/assistant-widget'
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://davo.v0.build'),
@@ -73,6 +74,7 @@ export default function RootLayout({
           <SiteHeader />
           {children}
           <SiteFooter />
+          <AssistantWidget />
         </ThemeProvider>
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
