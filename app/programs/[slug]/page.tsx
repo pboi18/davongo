@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowLeft, ArrowRight, Check, Quote } from 'lucide-react'
@@ -8,6 +9,13 @@ import { images } from '@/lib/data/images'
 type ProgramPageProps = { params: Promise<{ slug: string }> }
 
 export function generateStaticParams() { return programs.map((program) => ({ slug: program.slug })) }
+
+export async function generateMetadata({ params }: ProgramPageProps): Promise<Metadata> {
+  const { slug } = await params
+  const program = getProgram(slug)
+  if (!program) return { title: 'Programme not found', robots: { index: false, follow: false } }
+  return { title: program.title, description: program.description, openGraph: { title: program.title, description: program.description } }
+}
 
 export default async function ProgramDetailPage({ params }: ProgramPageProps) {
   const { slug } = await params

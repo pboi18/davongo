@@ -1,4 +1,7 @@
+import type { Metadata } from 'next'
 import Image from 'next/image'
+
+export const metadata: Metadata = { title: 'Our impact', description: 'See the people, places, and progress behind DAVO’s community-led work.' }
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { images } from '@/lib/data/images'

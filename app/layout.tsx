@@ -10,8 +10,29 @@ import { SiteHeader } from '@/components/site-header'
 import { SiteFooter } from '@/components/site-footer'
 
 export const metadata: Metadata = {
-  title: 'DAVO | Building a Nigeria where everyone can thrive',
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://davo.v0.build'),
+  title: {
+    default: 'DAVO | Building a Nigeria where everyone can thrive',
+    template: '%s | DAVO',
+  },
   description: 'DAVO partners with communities to create lasting change through opportunity, dignity, and collective action.',
+  applicationName: 'DAVO',
+  openGraph: {
+    type: 'website',
+    locale: 'en_NG',
+    siteName: 'DAVO',
+    title: 'DAVO | Building a Nigeria where everyone can thrive',
+    description: 'DAVO partners with communities to create lasting change through opportunity, dignity, and collective action.',
+    url: '/',
+    images: [{ url: '/opengraph-image', width: 1200, height: 630, alt: 'DAVO — building a Nigeria where everyone can thrive' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'DAVO | Building a Nigeria where everyone can thrive',
+    description: 'DAVO partners with communities to create lasting change through opportunity, dignity, and collective action.',
+    images: ['/opengraph-image'],
+  },
+  robots: { index: true, follow: true },
   generator: 'v0.app',
   icons: {
     icon: [
@@ -46,7 +67,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable} ${fraunces.variable} antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <SiteHeader />

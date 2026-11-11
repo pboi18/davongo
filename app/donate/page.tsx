@@ -1,4 +1,7 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
+
+export const metadata: Metadata = { title: 'Donate', description: 'Support locally led work creating opportunity, dignity, and collective action across Nigeria.' }
 import { CheckCircle2, FileCheck2, LockKeyhole, ShieldCheck } from 'lucide-react'
 import { DonationForm } from '@/components/donation-form'
 import { faqs, moneyBreakdown } from '@/lib/data/donation'
