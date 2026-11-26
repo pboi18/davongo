@@ -388,10 +388,6 @@ app.post("/api/applications", asyncHandler(async (req, res) => {
 
         const applicationId = application.id;
 
-        // ------------------------------------
-        // PREVIOUS EXPERIENCE
-        // ------------------------------------
-
         const experiences = Array.isArray(body.experiences)
             ? body.experiences
             : [];
@@ -417,10 +413,6 @@ app.post("/api/applications", asyncHandler(async (req, res) => {
                 }
             );
         }
-
-        // ------------------------------------
-        // VOLUNTEER PREFERENCES
-        // ------------------------------------
 
         const preferences = body.preferences || {};
 
@@ -466,11 +458,6 @@ app.post("/api/applications", asyncHandler(async (req, res) => {
                         : null
             }
         );
-
-        // ------------------------------------
-        // IDENTIFICATION, BACKGROUND AND
-        // EMERGENCY INFORMATION
-        // ------------------------------------
 
         const background = body.background || {};
 
@@ -525,11 +512,6 @@ app.post("/api/applications", asyncHandler(async (req, res) => {
                     clean(background.emergency_contact_phone)
             }
         );
-
-        // ------------------------------------
-        // NEXT OF KIN
-        // ------------------------------------
-
         const nextOfKin = body.next_of_kin || {};
 
         await insertRecord(
@@ -552,11 +534,6 @@ app.post("/api/applications", asyncHandler(async (req, res) => {
                 email: clean(nextOfKin.email)
             }
         );
-
-        // ------------------------------------
-        // REFERENCES
-        // ------------------------------------
-
         const references = Array.isArray(body.references)
             ? body.references
             : [];
@@ -652,22 +629,10 @@ app.post("/api/applications", asyncHandler(async (req, res) => {
 
 }));
 
-
-
-// ============================================
-// GET ALL VOLUNTEER APPLICATIONS
-// ADMIN ONLY
-// ============================================
-
 app.get(
     "/api/applications",
     requireAdmin,
     asyncHandler(async (req, res) => {
-
-        // ------------------------------------
-        // PAGINATION
-        // ------------------------------------
-
         const page = Math.max(
             1,
             parseInt(req.query.page) || 1
@@ -2046,3 +2011,14 @@ app.post(
 
     })
 );
+
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+    console.log(`DAVO NGO SERVER RUNNING , "Peter LimitLess Was great working with you !"
+
+Server: http://localhost:${PORT}
+Environment: ${process.env.NODE_ENV || "development"}
+    `);
+});
+
